@@ -11,21 +11,22 @@ const firebaseCloudMessaging = {
   init: async function () {
     if (!firebase.apps.length) {
       firebase.initializeApp({
-        apiKey: 'AIzaSyDFh7vqPeYpn910SH57WeofWnMXDc8WJGE',
-        authDomain: 'fir-cloud-messaging-5543f.firebaseapp.com',
-        databaseURL: 'https://fir-cloud-messaging-5543f.firebaseio.com',
-        projectId: 'fir-cloud-messaging-5543f',
-        storageBucket: 'fir-cloud-messaging-5543f.appspot.com',
-        messagingSenderId: '354347614212',
-        appId: '1:354347614212:web:7b474a30c18aa6d2b47551',
-        measurementId: 'G-L63HMWWX6W'
+        apiKey: "AIzaSyCN4t1nSfY03D0vwE14R5pd0D-hhAzjHh0",
+        authDomain: "cvslk-compro.firebaseapp.com",
+        projectId: "cvslk-compro",
+        storageBucket: "cvslk-compro.appspot.com",
+        messagingSenderId: "905506852813",
+        appId: "1:905506852813:web:0f30af51cd668730cdbe84",
+        measurementId: "G-39RM9VQG0D"
       })
 
       try {
+        console.log('try get token...')
         const messaging = firebase.messaging()
         const tokenInLocalForage = await this.tokenInlocalforage()
         //if FCM token is already there just return the token
         if (tokenInLocalForage !== null) {
+          console.log('fcm token in storage', tokenInLocalForage)
           return tokenInLocalForage
         }
         //requesting notification permission from browser
@@ -33,7 +34,7 @@ const firebaseCloudMessaging = {
         if (status && status === 'granted') {
           //getting token from FCM
           const fcm_token = await messaging.getToken({
-            vapidKey: 'BHKTEUH2duqytR3M_MViWykEoTgBb6MtrhkfsrzGkQqVjBJ0ape8ym4zIbx7JluWLfqABa_lykF5cAKcBu_7MGg'
+            vapidKey: 'BGwwgpGiC-llq4tqKmJxSSROIg7Xvwt8pX1-w7p8bPxEc01qw_HEfhTcWBw0XWBSzb2WZi5_8GGTkM4EsuOVoh0'
           })
           if (fcm_token) {
             //setting FCM token in indexed db using localforage
